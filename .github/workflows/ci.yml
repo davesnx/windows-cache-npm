@@ -34,7 +34,7 @@ jobs:
           cache: 'npm'
 
       - name: Install esy
-        run: npm ci
+        run: npm install --prefer-offline --audit false
 
       - name: Expose esy as binary
         if: runner.os == 'Windows'
