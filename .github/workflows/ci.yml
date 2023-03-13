@@ -34,7 +34,7 @@ jobs:
           cache: 'npm'
 
       - name: Install esy
-        run: npm install --prefer-offline --audit false
+        run: npm install -g --prefer-offline --audit false esy@0.6.12
 
       - name: Expose esy as binary
         run: |
