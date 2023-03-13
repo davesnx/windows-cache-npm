@@ -31,10 +31,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Install esy
-        run: yarn global add --prefix /usr/local esy@0.6.12
+        run: npm install -g --audit false --prefer-offline esy@0.6.12
 
       - name: Check esy version
         run: esy --version
