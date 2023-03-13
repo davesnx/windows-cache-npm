@@ -39,20 +39,15 @@ jobs:
       - name: Expose esy as binary
         if: runner.os == 'Windows'
         run: |
-          ls node_modules;
-          echo "---------------------------";
-          nodeInstallPath=$(npm config get prefix)
-          ls $nodeInstallPath\bin;
-          echo "$nodeInstallPath\bin" >> $GITHUB_PATH
+          ls node_modules/esy;
+          echo "node_modules\.bin" >> $GITHUB_PATH
 
       - name: Expose esy as binary
         if: runner.os != 'Windows'
         run: |
           ls node_modules;
           echo "---------------------------";
-          nodeInstallPath=$(npm config get prefix)
-          ls $nodeInstallPath/bin;
-          echo "$nodeInstallPath/bin" >> $GITHUB_PATH
+          echo "node_modules/.bin" >> $GITHUB_PATH
 
       # - name: Expose esy as binary
         # run: |
