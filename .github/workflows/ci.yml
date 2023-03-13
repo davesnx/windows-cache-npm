@@ -31,11 +31,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          path: ./node_modules
-          key: modules-${{ hashFiles('package-lock.json') }}
+          cache: 'npm'
 
       - name: Install esy
-        run: npm install -g --prefer-offline
+        run: npm install --prefer-offline --audit false
 
       - name: Expose esy as binary
         run: |
