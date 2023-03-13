@@ -27,7 +27,6 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
@@ -35,28 +34,6 @@ jobs:
 
       - name: Install esy
         run: npm install -g --prefer-offline --audit false esy@0.6.12
-
-      - name: Expose esy as binary
-        if: runner.os == "Windows"
-        run: |
-          nodeInstallPath=$(npm config get prefix)
-          ls $nodeInstallPath\bin;
-          echo "$nodeInstallPath\bin" >> $GITHUB_PATH
-
-      - name: Expose esy as binary
-      if: runner.os != "Windows"
-        run: |
-          nodeInstallPath=$(npm config get prefix)
-          ls $nodeInstallPath/bin;
-          echo "$nodeInstallPath/bin" >> $GITHUB_PATH
-
-      # - name: Expose esy as binary
-        # run: |
-          # mkdir ~/.npm-global
-          # npm config set prefix '~/.npm-global'
-          # export PATH=~/.npm-global/bin:$PATH
-          # nodeInstallPath=$(npm config get prefix)
-          # echo "$nodeInstallPath/bin" >> $GITHUB_PATH
 
       - name: Debug
         shell: bash
