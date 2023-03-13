@@ -44,11 +44,11 @@ jobs:
 
       - name: Expose esy as binary
         if: runner.os != 'Windows'
-        run: echo "${HOME}/.local/bin" >> $GITHUB_PATH
+        run: echo "${npm config get prefix}/.local/bin" >> $GITHUB_PATH
 
       - name: Expose esy as binary when Windows
         if: runner.os == 'Windows'
-        run: echo "${HOME}/.local/bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        run: echo "${npm config get prefix}/.local/bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
       - name: Check esy version
         run: esy --version
