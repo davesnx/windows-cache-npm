@@ -37,5 +37,18 @@ jobs:
       - name: Install esy
         run: npm ci
 
+      - name: Debug
+        shell: bash
+        run: |
+          ls -lsha $HOME/.npm;
+
+      - name: Expose esy as binary
+        if: matrix.os != windows-latest
+        run: echo "${HOME}/.local/bin" >> $GITHUB_PATH
+
+      - name: Expose esy as binary when Windows
+        if: matrix.os != windows-latest
+        run: echo "${HOME}/.local/bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
       - name: Check esy version
         run: esy --version
