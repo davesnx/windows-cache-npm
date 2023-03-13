@@ -37,14 +37,14 @@ jobs:
         run: npm ci
 
       - name: Expose esy as binary
-        if: runner.os == "Windows"
+        if: runner.os == 'Windows'
         run: |
           nodeInstallPath=$(npm config get prefix)
           ls $nodeInstallPath\bin;
           echo "$nodeInstallPath\bin" >> $GITHUB_PATH
 
       - name: Expose esy as binary
-        if: runner.os != "Windows"
+        if: runner.os != 'Windows'
         run: |
           nodeInstallPath=$(npm config get prefix)
           ls $nodeInstallPath/bin;
