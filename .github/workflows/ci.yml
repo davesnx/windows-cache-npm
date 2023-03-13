@@ -35,7 +35,7 @@ jobs:
           key: modules-${{ hashFiles('package-lock.json') }}
 
       - name: Install esy
-        run: npm install --prefer-offline
+        run: npm install -g --prefer-offline
 
       - name: Expose esy as binary
         run: |
