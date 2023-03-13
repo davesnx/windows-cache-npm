@@ -37,14 +37,16 @@ jobs:
       - name: Install esy
         run: npm ci
 
+      - name: Expose esy as binary
+        if: runner.os != 'Windows'
+        run: npm config get prefix >> $GITHUB_PATH
+
       - name: Debug
         shell: bash
         run: |
           npm config get prefix;
-
-      - name: Expose esy as binary
-        if: runner.os != 'Windows'
-        run: npm config get prefix >> $GITHUB_PATH
+          /opt/hostedtoolcache/node/16.19.1/x64/esy --version;
+          echo $GITHUB_PATH
 
       - name: Expose esy as binary when Windows
         if: runner.os == 'Windows'
